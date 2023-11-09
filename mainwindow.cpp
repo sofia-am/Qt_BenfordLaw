@@ -5,7 +5,7 @@
 #include "ui_mainwindow.h"
 
 uint16_t fileSizeCount[9] = {0};
-QList<QString> directoryTable;
+
 //char **directoryTable;
 
 MainWindow::MainWindow(QWidget *parent)
@@ -14,7 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    this->ui->lineEdit->setText("/home/cnet/Qt");
+    this->ui->lineEdit->setText("/home/cnet/untitled");
 }
 
 MainWindow::~MainWindow()
@@ -39,6 +39,7 @@ void MainWindow::on_pushButton_clicked()
 
 void MainWindow::parseDirectory(QString path){
     //argument sets directory
+    QList<QString> directoryTable;
     QDir d(path);
     qDebug() << "Inside " << path << " directory";
     QFileInfoList listado2 = d.entryInfoList();
@@ -54,13 +55,11 @@ void MainWindow::parseDirectory(QString path){
         if (fi.isDir()) {
             directoryTable.append(fi.absoluteFilePath());
         }
+    }
 
-        for(auto i = directoryTable.begin(); i != directoryTable.end(); i++){
-            qDebug() << *i;
-            //parseDirectory(*i);
-           //i++;
-        }
+    for(auto i = directoryTable.begin(); i != directoryTable.end(); i++){
+        qDebug() << *i;
+        parseDirectory(*i);
     }
 }
-
 
