@@ -18,6 +18,7 @@ public:
 private slots:
     void on_toolButton_clicked();
     void on_pushButton_clicked();
+    void parseDirectory(QString path);
 
 private:
     Ui::MainWindow *ui;
