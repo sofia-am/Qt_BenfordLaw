@@ -35,6 +35,7 @@ void MainWindow::on_pushButton_clicked()
     for(int i = 0; i < 9; i++){
         qDebug() << fileSizeCount[i];
     }
+    //uwu
 }
 
 void MainWindow::parseDirectory(QString path){
